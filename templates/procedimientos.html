@@ -1,0 +1,55 @@
+{% extends "maestra.html" %}
+{% block titulo %} Procedimientos {% endblock %}
+{% block contenido %}
+
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            <h3 class="is-size-3">Procedimientos</h3>
+            <a href="{{url_for('formulario_agregar_procedimiento')}}" class="button is-success">Agregar</a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Fecha</th>
+                        <th>Descripción</th>
+                        <th>Tipo de Procedimiento id</th>
+                        <th>Arbol id</th>
+                        <th>Responsable id</th>
+                        <th>Usuario id</th>
+                        <th>Fecha Creado</th>
+                        <th>Fecha Actualizado</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for procedimiento in procedimientos %}
+                    <tr>
+                        <td>{{procedimiento[0]}}</td>
+                        <td>{{procedimiento[1]}}</td>
+                        <td>{{procedimiento[2]}}</td>
+                        <td>{{procedimiento[3]}}</td>
+                        <td>{{procedimiento[4]}}</td>
+                        <td>{{procedimiento[5]}}</td>
+                        <td>{{procedimiento[6]}}</td>
+                        <td>{{procedimiento[7]}}</td>
+                        <td>{{procedimiento[8]}}</td>
+                        <td>
+                            {# Pasar el id (lo que hay en procedimiento[0] #}
+                            <a href="{{url_for('editar_procedimiento', id=procedimiento[0])}}" class="button is-info">Editar</a>
+                        </td>
+                        <td>
+                            <form action="{{url_for('eliminar_procedimiento')}}" method="POST">
+                                <input type="hidden" name="id" value="{{procedimiento[0]}}">
+                                <button class="button is-danger">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}

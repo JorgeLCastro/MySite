@@ -1,0 +1,38 @@
+{% extends "maestra.html" %}
+{% block titulo %}
+Agregar Procedimiento
+{% endblock %}
+{% block contenido %}
+<section class="section">
+    <div class="columns">
+        <div class="column is-one-third">
+            <h3 class="is-size-3">Agregar procedimiento</h3>
+            <form action="{{url_for('guardar_procedimiento')}}" method="post">
+
+                <label for="date">Fecha</label>
+                <input required type="date" class="input" placeholder="Date" name="date" id="date">
+                <label for="description">Descripción</label>
+                <input required type="text" class="input" placeholder="Description" name="description" id="description">
+                <label for="user_id">Tipo de procedimientos:</label>
+                <select class="input" name="procedure_type_id" id="procedure_type_id">
+                    {% for procedimiento_tipo in procedimientos_tipo %}
+                        
+                    <option value="{{procedimiento_tipo[0]}}">{{procedimiento_tipo[1]}}</option>
+                    {% endfor %}
+                </select>
+                <label for="tree_id">Arbol id:</label>
+                <input required type="bigint" class="input" placeholder="Tree_id" name="tree_id" id="tree_id">
+                <label for="responsible_id">Responsable id:</label>
+                <input required type="bigint" class="input" placeholder="Responsible_id" name="responsible_id" id="responsible_id">
+                <label for="user_id">Usuario id:</label>
+                <input required type="bigint" class="input" placeholder="User_id" name="user_id" id="user_id">
+                
+               
+                <button type="submit" class="button is-success mt-2">Guardar</button>
+                <a href="{{url_for('procedimientos')}}" class="button is-primary mt-2">Volver</a>
+                
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

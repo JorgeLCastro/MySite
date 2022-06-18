@@ -1,0 +1,25 @@
+{% extends "maestra.html" %}
+{% block titulo %}
+Editar Tipo de procedimiento
+{% endblock %}
+{% block contenido %}
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            <h3 class="is-size-3">Editar Tipo de Procedimiento</h3>
+            <form action="{{url_for('actualizar_procedimiento_tipo')}}" method="post">
+                {# Enviar el id en un campo oculto #}
+                <input type="hidden" name="id" value="{{procedimiento_tipo[0]}}">
+
+                <label for="name">Nombre:</label>
+                <input value="{{procedimiento_tipo[1]}}" required type="varchar" class="input" placeholder="Name" name="name" id="name">
+                <label for="description">Descripción:</label>
+                <input value="{{procedimiento_tipo[2]}}" required type="text" class="input" placeholder="Description" name="description" id="description">
+                
+                <button type="submit" class="button is-success mt-2">Guardar</button>
+                <a href="{{url_for('procedimientos_tipo')}}" class="button is-primary mt-2">Volver</a>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

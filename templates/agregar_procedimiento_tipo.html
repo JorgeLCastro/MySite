@@ -1,0 +1,24 @@
+{% extends "maestra.html" %}
+{% block titulo %}
+Agregar Procedimiento Tipo
+{% endblock %}
+{% block contenido %}
+<section class="section">
+    <div class="columns">
+        <div class="column is-one-third">
+            <h3 class="is-size-3">Agregar tipo de procedimiento</h3>
+            <form action="{{url_for('guardar_procedimiento_tipo')}}" method="post">
+                            
+                <label for="name">Nombre:</label>
+                <input required type="varchar" class="input" placeholder="Name" name="name" id="name">
+                <label for="description">Descripcion:</label>
+                <input required type="text" class="input" placeholder="Description" name="description" id="description">
+                                
+                <button type="submit" class="button is-success mt-2">Guardar</button>
+                <a href="{{url_for('procedimientos_tipo')}}" class="button is-primary mt-2">Volver</a>
+                
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}
